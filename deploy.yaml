@@ -13,6 +13,17 @@ spec:
       labels:
         app: pfe-front
     spec:
+      initContainers:
+      - name: oc-login
+        image: openshift/origin-cli:latest
+        command:
+        - oc
+        - login
+        - --token=sha256~Ts7d1-6HS8XQopIw82tyiv9buFk76HVH_QH64YdPq6M
+        - --server=https://api.crc.testing:6443
+        env:
+        - name: KUBEVIRT_VERSION
+          value: "v0.49.0"  # You can replace with appropriate environment variables
       containers:
       - name: pfe-front
         image: default-route-openshift-image-registry.apps-crc.testing/pfe/pfe-front:latest
