@@ -2,8 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pfe-front-deployment
-  labels:
-    app: pfe-front
+  namespace: pfe  # Ensure the namespace is specified here
 spec:
   replicas: 1
   selector:
@@ -16,10 +15,6 @@ spec:
     spec:
       containers:
       - name: pfe-front
-        image: default-route-openshift-image-registry.apps-crc.testing/pfe/pfe-front:latest
+        image: ${IMAGE_REGISTRY}/${OPENSHIFT_NAMESPACE}/pfe-front:latest
         ports:
-        - containerPort: 8080 # Replace with the actual port used by your container
-        env:
-        - name: ENV_VAR_NAME  # Add environment variables as needed
-          value: "value"  # Set appropriate values for your environment variables
-        imagePullPolicy: Always
+        - containerPort: 8080
