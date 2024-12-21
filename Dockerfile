@@ -7,7 +7,7 @@ WORKDIR /app
 COPY package*.json ./
 COPY package.json ./
 # Install project dependencies
-RUN sudo npm install --no-optional --quiet
+RUN  npm install -f
 
 # Copy the entire application to the container
 COPY . .
