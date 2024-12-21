@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: pfe-front
-        image: image-registry.openshift-image-registry.svc:5000/pfe/pfe-front:latest
+        image: default-route-openshift-image-registry.apps-crc.testing/pfe/pfe-front:latest
         ports:
         - containerPort: 3000
